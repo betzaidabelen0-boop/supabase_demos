@@ -1,7 +1,9 @@
 $def with(datos)
 <h1>Contactos</h1>
 
-$datos
+# Para pasar datos de python a html se hace uso de "for"
+$for registro in datos:
+    $registro["nombre"]
 
 <table>
     <thead>

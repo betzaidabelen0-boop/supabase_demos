@@ -50,17 +50,17 @@
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
-      "humanEdits": 2,
+      "humanEdits": 4,
       "lastEditType": "human",
-      "lastEditTimestamp": 1793982440192,
+      "lastEditTimestamp": 1793984250592,
       "signals": {
         "typingRhythm": 0.125,
         "editSize": 0.07999999999999996,
-        "cursorMovement": 0.3,
+        "cursorMovement": 0.5,
         "editSequence": 0.8300000000000001,
         "undoFrequency": 0.1,
         "extensionSource": 0.5,
-        "velocityProfile": 0.8,
+        "velocityProfile": 0.5,
         "selectionPattern": 0.5,
         "pastePattern": 0.2,
         "deletionPattern": 0.15,
@@ -72,18 +72,18 @@
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
-      "humanEdits": 9,
+      "humanEdits": 139,
       "lastEditType": "human",
-      "lastEditTimestamp": 1793982449784,
+      "lastEditTimestamp": 1793984307603,
       "signals": {
         "typingRhythm": 0.125,
-        "editSize": 0.19999999999999996,
-        "cursorMovement": 0.3,
+        "editSize": 0.07999999999999996,
+        "cursorMovement": 0.5,
         "editSequence": 0.8300000000000001,
         "undoFrequency": 0.1,
         "extensionSource": 0.5,
-        "velocityProfile": 0.8,
-        "selectionPattern": 0.7,
+        "velocityProfile": 0.5,
+        "selectionPattern": 0.5,
         "pastePattern": 0.2,
         "deletionPattern": 0.15,
         "pausePattern": 0.15
@@ -94,17 +94,17 @@
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
-      "humanEdits": 1,
+      "humanEdits": 29,
       "lastEditType": "human",
-      "lastEditTimestamp": 1793982440566,
+      "lastEditTimestamp": 1793984195250,
       "signals": {
         "typingRhythm": 0.125,
         "editSize": 0.07999999999999996,
-        "cursorMovement": 0.3,
+        "cursorMovement": 0.5,
         "editSequence": 0.8300000000000001,
         "undoFrequency": 0.1,
         "extensionSource": 0.5,
-        "velocityProfile": 0.8,
+        "velocityProfile": 0.5,
         "selectionPattern": 0.5,
         "pastePattern": 0.2,
         "deletionPattern": 0.15,
@@ -113,6 +113,50 @@
     },
     {
       "line": 5,
+      "author": "human",
+      "confidence": 0.92,
+      "aiEdits": 0,
+      "humanEdits": 25,
+      "lastEditType": "human",
+      "lastEditTimestamp": 1793984212542,
+      "signals": {
+        "typingRhythm": 0.125,
+        "editSize": 0.07999999999999996,
+        "cursorMovement": 0.5,
+        "editSequence": 0.8300000000000001,
+        "undoFrequency": 0.1,
+        "extensionSource": 0.5,
+        "velocityProfile": 0.5,
+        "selectionPattern": 0.5,
+        "pastePattern": 0.2,
+        "deletionPattern": 0.15,
+        "pausePattern": 0.15
+      }
+    },
+    {
+      "line": 6,
+      "author": "human",
+      "confidence": 0.92,
+      "aiEdits": 0,
+      "humanEdits": 3,
+      "lastEditType": "human",
+      "lastEditTimestamp": 1793984218974,
+      "signals": {
+        "typingRhythm": 0.125,
+        "editSize": 0.15000000000000002,
+        "cursorMovement": 0.5,
+        "editSequence": 0.8300000000000001,
+        "undoFrequency": 0.1,
+        "extensionSource": 0.5,
+        "velocityProfile": 0.5,
+        "selectionPattern": 0.5,
+        "pastePattern": 0.2,
+        "deletionPattern": 0.15,
+        "pausePattern": 0.15
+      }
+    },
+    {
+      "line": 7,
       "author": "human",
       "confidence": 0.3680000000000001,
       "aiEdits": 0,
@@ -134,7 +178,7 @@
       }
     },
     {
-      "line": 6,
+      "line": 8,
       "author": "human",
       "confidence": 0.3666666666666666,
       "aiEdits": 0,
@@ -156,7 +200,7 @@
       }
     },
     {
-      "line": 7,
+      "line": 9,
       "author": "human",
       "confidence": 0.40249999999999997,
       "aiEdits": 0,
@@ -178,7 +222,7 @@
       }
     },
     {
-      "line": 8,
+      "line": 10,
       "author": "human",
       "confidence": 0.430566037735849,
       "aiEdits": 0,
@@ -200,7 +244,7 @@
       }
     },
     {
-      "line": 9,
+      "line": 11,
       "author": "human",
       "confidence": 0.430566037735849,
       "aiEdits": 0,
@@ -222,7 +266,7 @@
       }
     },
     {
-      "line": 10,
+      "line": 12,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -244,7 +288,7 @@
       }
     },
     {
-      "line": 11,
+      "line": 13,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -266,7 +310,7 @@
       }
     },
     {
-      "line": 12,
+      "line": 14,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -288,7 +332,7 @@
       }
     },
     {
-      "line": 13,
+      "line": 15,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -310,7 +354,7 @@
       }
     },
     {
-      "line": 14,
+      "line": 16,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -332,7 +376,7 @@
       }
     },
     {
-      "line": 15,
+      "line": 17,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -354,7 +398,7 @@
       }
     },
     {
-      "line": 16,
+      "line": 18,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -376,7 +420,7 @@
       }
     },
     {
-      "line": 17,
+      "line": 19,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -398,7 +442,7 @@
       }
     },
     {
-      "line": 18,
+      "line": 20,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -420,7 +464,7 @@
       }
     },
     {
-      "line": 19,
+      "line": 21,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -442,7 +486,7 @@
       }
     },
     {
-      "line": 20,
+      "line": 22,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -464,7 +508,7 @@
       }
     },
     {
-      "line": 21,
+      "line": 23,
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
@@ -487,12 +531,12 @@
     }
   ],
   "summary": {
-    "totalLines": 22,
+    "totalLines": 24,
     "aiLines": 0,
-    "humanLines": 22,
+    "humanLines": 24,
     "mixedLines": 0,
     "aiPercentage": 0,
     "humanPercentage": 100
   },
-  "lastUpdated": 1793982451074
+  "lastUpdated": 1793984308881
 }
