@@ -6,9 +6,13 @@ render = web.template.render('mvc/views', base='template')
 class Contactos:
 
     def GET(self):
-
+        
         model_contactos = ModelContactos()
 
-        print(model_contactos.obtenerContactos())
+        # Almacena en datos los registros recibidos de Supabase 
+        datos = model_contactos.obtenerContactos()
 
-        return render.contactos() #type ignore
+        print(datos)
+
+        # Envía a contactos.html los datos de Supabase
+        return render.contactos(datos) #type ignore
