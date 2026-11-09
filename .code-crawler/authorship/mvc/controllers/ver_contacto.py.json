@@ -226,12 +226,12 @@
       "author": "human",
       "confidence": 0.92,
       "aiEdits": 0,
-      "humanEdits": 28,
+      "humanEdits": 29,
       "lastEditType": "human",
-      "lastEditTimestamp": 1794235656890,
+      "lastEditTimestamp": 1794237315461,
       "signals": {
         "typingRhythm": 0.125,
-        "editSize": 0.07999999999999996,
+        "editSize": 0.15000000000000002,
         "cursorMovement": 0.3,
         "editSequence": 0.8300000000000001,
         "undoFrequency": 0.1,
@@ -318,5 +318,5 @@
     "aiPercentage": 0,
     "humanPercentage": 100
   },
-  "lastUpdated": 1794236037709
+  "lastUpdated": 1794237316761
 }

@@ -8,6 +8,6 @@ class VerContacto:
 
     def GET(self, id_contacto):
         model_contactos = ModelContactos()
-        contacto = model_contactos.buscarContactoPorId(id_contacto)
+        contacto = model_contactos.buscarContacto(id_contacto)
         print(contacto)
         return render.ver_contacto(contacto)

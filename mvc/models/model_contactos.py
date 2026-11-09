@@ -13,7 +13,7 @@ class ModelContactos:
             )
         except Exception as error:
             print(
-                f"ERROR 100: {error.args[0] if error.args else 'Error al conectar'}"
+                f"ERROR model_contactos 100: {error.args[0] if error.args else 'Error al conectar'}"
             )
 
 
@@ -30,7 +30,7 @@ class ModelContactos:
     def insertarContacto(self, nombre, email, telefono):
         try:
             #INSERT INTO contactos(nombre, email, telefono) VALUE
-            data = {
+            datos = {
                 "nombre":nombre,
                 "email":email,
                 "telefono":telefono
@@ -38,7 +38,7 @@ class ModelContactos:
             response = self.supabase.table("contactos").insert(datos).execute()
             return response.data
         except Exception as error:
-            print(f"ERROR 103: {error.args[0]}")
+            print(f"ERROR model_contactos 103: {error.args[0]}")
 
 
     def borrarContacto(self, id_contacto):
