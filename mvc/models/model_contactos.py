@@ -1,60 +1,139 @@
 import os
+from supabase import create_client, Client
 from dotenv import load_dotenv
-from supabase import Client, create_client
+import hashlib
+import hmac
+from typing import Any, cast
+
+import logging
 
 load_dotenv()
 
+logger = logging.getLogger(__name__)
+
 class ModelContactos:
-    def __init__(self):
+
+    def __init__(self) -> None:
         try:
             self.supabase: Client = create_client(
-                os.environ.get("SUPABASE_URL", ""),
-                os.environ.get("SUPABASE_KEY", ""),
+                os.environ.get("SUPABASE_URL" , ""),
+                os.environ.get("SUPABASE_KEY" , "")
             )
+            self.SECRET_KEY = b"hola"
         except Exception as error:
-            print(
-                f"ERROR model_contactos 100: {error.args[0] if error.args else 'Error al conectar'}"
-            )
+            logger.error(f"ERROR 100: {str(error)}")
+            print(f"ERROR 100: {str(error)}")
 
-
-    def obtenerContactos(self):
-        response = self.supabase.table("contactos").select("*").execute()
-        return response.data
-
-
-    def buscarContacto(self, id_contacto):
-        response = self.supabase.table("contactos").select("*").eq("id_contacto", id_contacto).execute()   
-        return response.data
-
-
-    def insertarContacto(self, nombre, email, telefono):
+    def generarHash(self,id: int) -> str:
         try:
-            #INSERT INTO contactos(nombre, email, telefono) VALUE
-            datos = {
-                "nombre":nombre,
-                "email":email,
-                "telefono":telefono
-            }
-            response = self.supabase.table("contactos").insert(datos).execute()
+            """Genera un hash único a partir del ID."""
+            mensaje = str(id).encode("utf-8")
+            firma =  hmac.new(b"hola", mensaje, hashlib.sha256).hexdigest()
+            # Concatena el id:firma
+            return f"{id}:{firma}"
+        except Exception as error:
+            logger.error("ERROR 106: %s", error)
+            print(f"ERROR 106: {str(error)}")
+            return ""
+
+
+    def validarHash(self,hash_a_validar: str) -> int|None:
+        try:
+            # Separa el id, separador y la firma
+            id_str, sep, _ = hash_a_validar.partition(":")
+            resultado_id = None
+
+            # Solo calculamos el hash si la estructura básica es válida
+            if sep and id_str.isdigit():
+                token_esperado = self.generarHash(int(id_str))
+                if hmac.compare_digest(token_esperado, hash_a_validar):
+                    resultado_id = int(id_str)
+                else:
+                    resultado_id = None
+            else:
+                resultado_id = None
+
+            return resultado_id
+        except Exception as error:
+            logger.error("ERROR 107: %s", error)
+            print(f"ERROR 107: {str(error)}")
+            return -1
+
+    def obtenerContactos(self) -> list[dict[str,Any]]:
+        contactos: list[dict[str,Any]]
+        try:
+            # SELECT * FROM contactos;
+            response = self.supabase.table("contactos").select("*").execute()
+            registros = response.data or []
+            for registro in response.data:
+                id_num = int(registro["id_contacto"]) # type: ignore
+                registro["id_contacto"] = self.generarHash(id_num) # type: ignore
+            contactos = cast(list[dict[str, Any]],registros)
+            return contactos
+        except Exception as error:
+            logger.error("ERROR 101: %s", error)
+            print(f"ERROR 101: {str(error)}")
+            return []
+
+    def buscarContacto(self,id_contacto:str):
+        try:
+            id = self.validarHash(id_contacto)
+            # SELECT * FROM contactos WHERE id_contacto = ?;
+            response = self.supabase.table("contactos").select("*").eq("id_contacto",id).execute()
             return response.data
         except Exception as error:
-            print(f"ERROR model_contactos 103: {error.args[0]}")
+            logger.error("ERROR 102: %s", error)
+            print(f"ERROR 102: {str(error)}")
+            return []
 
+    def insertarContacto(self,nombre:str,email:str,telefono:str,foto:str):
+        try:
+            # INSERT INTO contactos(nombre,email,telefono,foto) VALUES(?,?,?,?);
+            data = {
+                "nombre":nombre,
+                "email":email,
+                "telefono":telefono,
+                "foto":foto
+            }
+            response = self.supabase.table("contactos").insert(data).execute()
+            return response.data
+        except Exception as error:
+            logger.error("ERROR 103: %s", error)
+            print(f"ERROR 103: {str(error)}")
 
-    def borrarContacto(self, id_contacto):
-        response = self.supabase.table("contactos").delete().eq("id_contacto", id_contacto).execute()
-        return response.data
+    def borrarContacto(self,id_contacto:str):
+        try:
+            id = self.validarHash(id_contacto)
+            # DELETE * FROM contactos WHERE id_contacto = ?;
+            response = self.supabase.table("contactos").delete().eq("id_contacto",id).execute()
+            return response.data
+        except Exception as error:
+            logger.error("ERROR 104: %s", error)
+            print(f"ERROR 104: {str(error)}")
 
-
-    def actualizarContacto(self, id_contacto, nombre, email, telefono):        
-        response = self.supabase.table("contactos").update(datos).eq("id_contacto", id_contacto).execute()
-        return response.data
+    def actualizarContacto(self,id_contacto:str,nombre:str,email:str,telefono:str,foto:str):
+        try:
+            id = self.validarHash(id_contacto)
+            # UPDATE SET nombre=?, email=?, telefono=?, foto=? FROM contactos WHERE id_contacto=?;
+            data = {
+                "nombre":nombre,
+                "email":email,
+                "telefono":telefono,
+                "foto":foto
+            }
+            response = self.supabase.table("contactos").update(data).eq("id_contacto",id).execute()
+            return response.data
+        except Exception as error:
+            logger.error("ERROR 105: %s", error)
+            print(f"ERROR 105: {str(error)}")
 
 
 if __name__ == "__main__":
     model_contactos = ModelContactos()
     print(model_contactos.obtenerContactos())
-    print(model_contactos.buscarContacto(1))
-    print(model_contactos.insertarContacto(1))
-    print(model_contactos.borrarContacto("0"))
-    print(model_contactos.actualizarContacto(1))   
+    #print(model_contactos.buscarContacto(2))
+    print(model_contactos.insertarContacto("Carthoris","carthoris@email","333333","foto.jpg"))
+    #print(model_contactos.obtenerContactos())
+    #print(model_contactos.borrarContacto(4))
+    #print(model_contactos.actualizarContacto(5,"Juan","juan@email","8888888","foto.jpg"))
+    

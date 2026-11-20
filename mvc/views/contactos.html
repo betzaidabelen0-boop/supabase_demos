@@ -1,30 +1,28 @@
 $def with(datos)
 <h1>Contactos</h1>
 
-<a href="/insertar_contacto">Insertar Contacto</a>
+<a href="/insertar_contacto">Nuevo contacto</a>
 
 <table>
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Ver</th>
-            <th>Actualizar</th>
-            <th>Borrar</th>
-        </tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Ver</th>
+        <th>Actualizar</th>
+        <th>Borrar</th>
     </thead>
     <tbody>
-    $for contacto in datos:
-        <tr>
-            <td>$contacto['id_contacto']</td>
-            <td>$contacto['nombre']</td>
-            <td>$contacto['email']</td>
-            <td>$contacto['telefono']</td>
-            <td><a href="/ver_contacto/$contacto['id_contacto']">Ver</a></td>
-            <td><a href="/actualizar_contacto/$contacto['id_contacto']">Actualizar</a></td>
-            <td><a href="/borrar_contacto/$contacto['id_contacto']">Borrar</a></td>
-        </tr>
+        $for registro in datos:
+            <tr>
+                <td><img src="static/fotos/$registro['foto']" height="50px" width="50px"></td>
+                <td>$registro["nombre"]</td>
+                <td>$registro["email"]</td>
+                <td>$registro["telefono"]</td>
+                <td><a href="/ver_contacto/$registro['id_contacto']">Ver</a></td>
+                <td><a href="/actualizar_contacto/$registro['id_contacto']">Actualizar</a></td>
+                <td><a href="/borrar_contacto/$registro['id_contacto']">Borrar</a></td>
+            </tr>
     </tbody>
 </table>
